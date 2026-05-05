@@ -76,6 +76,83 @@ const testimonials = [
 
 const partners = ["Microsoft", "AWS", "Google Cloud", "Cisco", "Fortinet", "VMware", "Veeam", "Sophos"];
 
+const HeroCarousel = () => {
+  const autoplay = useRef(Autoplay({ delay: 5500, stopOnInteraction: false }));
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+    api.on("select", () => setCurrent(api.selectedScrollSnap()));
+  }, [api]);
+
+  return (
+    <section className="relative overflow-hidden bg-gradient-hero pt-20">
+      <div className="absolute inset-0 grid-pattern opacity-40 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-radial pointer-events-none" />
+      <Carousel
+        setApi={setApi}
+        plugins={[autoplay.current]}
+        opts={{ loop: true }}
+        className="relative"
+      >
+        <CarouselContent>
+          {heroSlides.map((slide, i) => (
+            <CarouselItem key={i}>
+              <div className="container relative grid lg:grid-cols-12 gap-12 items-center pt-12 pb-20 lg:pt-24 lg:pb-28 min-h-[600px] lg:min-h-[680px]">
+                <div className="lg:col-span-7 animate-fade-up">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/80 backdrop-blur">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary-glow animate-pulse" />
+                    {slide.eyebrow}
+                  </div>
+                  <h1 className="mt-6 font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] text-balance">
+                    <span className="bg-gradient-to-r from-white via-white to-blue-300 bg-clip-text text-transparent">
+                      {slide.title}
+                    </span>
+                  </h1>
+                  <p className="mt-7 text-lg text-white/70 max-w-2xl leading-relaxed">{slide.desc}</p>
+                  <div className="mt-10 flex flex-wrap gap-4">
+                    <Button asChild size="lg" className="bg-gradient-accent text-white hover:opacity-95 rounded-full h-13 px-7 shadow-glow font-medium">
+                      <a href="#contato">Solicitar Diagnóstico <ArrowRight className="ml-2 h-4 w-4" /></a>
+                    </Button>
+                    <Button asChild size="lg" variant="outline" className="rounded-full h-13 px-7 bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white font-medium">
+                      <a href="#servicos">Ver Soluções</a>
+                    </Button>
+                  </div>
+                  <div className="mt-12 flex flex-wrap gap-x-10 gap-y-4 text-sm text-white/50">
+                    <span className="flex items-center gap-2"><Check className="h-4 w-4 text-primary-glow" /> SLA corporativo</span>
+                    <span className="flex items-center gap-2"><Check className="h-4 w-4 text-primary-glow" /> Monitoramento 24/7</span>
+                    <span className="flex items-center gap-2"><Check className="h-4 w-4 text-primary-glow" /> Especialistas certificados</span>
+                  </div>
+                </div>
+                <div className="lg:col-span-5 relative">
+                  <div className="relative rounded-2xl overflow-hidden shadow-elegant border border-white/10 aspect-[4/3]">
+                    <img src={slide.image} alt={slide.eyebrow} width={1280} height={960} loading={i === 0 ? "eager" : "lazy"} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/70 via-navy-950/20 to-transparent" />
+                  </div>
+                </div>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+        {Array.from({ length: count }).map((_, i) => (
+          <button
+            key={i}
+            onClick={() => api?.scrollTo(i)}
+            aria-label={`Ir para slide ${i + 1}`}
+            className={`h-1.5 rounded-full transition-all ${i === current ? "w-8 bg-primary-glow" : "w-2 bg-white/30 hover:bg-white/60"}`}
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
