@@ -1,16 +1,353 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import heroImg from "@/assets/hero-tech.jpg";
+import {
+  Shield, Cloud, Network, Phone, Headphones, Briefcase,
+  ArrowRight, Check, Building2, Store, Factory, Stethoscope,
+  Layers, ClipboardList, Mail, MapPin, MessageCircle, Linkedin,
+  Instagram, Sparkles, Gauge, Lock, TrendingUp, Users, Zap,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const services = [
+  { icon: Headphones, title: "Terceirização de TI", desc: "Equipe técnica dedicada, SLA garantido e gestão completa do seu ambiente tecnológico." },
+  { icon: Briefcase, title: "Consultoria Estratégica", desc: "Planejamento tecnológico alinhado aos objetivos de negócio e crescimento sustentável." },
+  { icon: Network, title: "Infraestrutura e Redes", desc: "Projetos robustos de rede, servidores e estruturação de data centers corporativos." },
+  { icon: Shield, title: "Segurança da Informação", desc: "Proteção avançada contra ameaças, compliance e continuidade operacional." },
+  { icon: Cloud, title: "Soluções em Cloud", desc: "Migração, gestão e otimização de ambientes em nuvem AWS, Azure e Google Cloud." },
+  { icon: Phone, title: "Telefonia VoIP", desc: "Comunicação corporativa moderna, escalável e integrada ao seu fluxo de trabalho." },
+];
+
+const differentiators = [
+  { icon: Users, title: "Atendimento consultivo", desc: "Especialistas com visão estratégica de negócio." },
+  { icon: TrendingUp, title: "Redução de custos", desc: "Otimização operacional e eficiência comprovada." },
+  { icon: Lock, title: "Segurança e continuidade", desc: "Operação estável, segura e em conformidade." },
+  { icon: Gauge, title: "Suporte ágil", desc: "Resposta rápida e personalizada para cada cliente." },
+  { icon: Layers, title: "Soluções escaláveis", desc: "Infraestrutura preparada para o seu crescimento." },
+  { icon: Sparkles, title: "Visão de negócio", desc: "Tecnologia como vetor real de resultados." },
+];
+
+const segments = [
+  { icon: Building2, label: "Escritórios corporativos" },
+  { icon: Store, label: "Varejo e franquias" },
+  { icon: Factory, label: "Indústrias" },
+  { icon: Stethoscope, label: "Clínicas e saúde" },
+  { icon: Layers, label: "Empresas multiunidade" },
+  { icon: ClipboardList, label: "Operações administrativas" },
+];
+
+const testimonials = [
+  { quote: "A Lazarti transformou nossa operação de TI. Hoje temos previsibilidade, segurança e suporte que realmente entende o negócio.", author: "Carla Mendes", role: "Diretora de Operações, Grupo Vértice" },
+  { quote: "Migramos toda nossa infraestrutura para a cloud com zero impacto. Profissionalismo enterprise do começo ao fim.", author: "Rodrigo Almeida", role: "CTO, Industrial Pacific" },
+  { quote: "Parceria estratégica de verdade. A consultoria deles redefiniu nossa estrutura tecnológica em 6 meses.", author: "Fernanda Lopes", role: "CEO, RedeSaúde+" },
+];
+
+const partners = ["Microsoft", "AWS", "Google Cloud", "Cisco", "Fortinet", "VMware", "Veeam", "Sophos"];
+
+const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="min-h-screen bg-background">
+      {/* NAV */}
+      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-navy-950/70 border-b border-white/5">
+        <div className="container flex h-20 items-center justify-between">
+          <a href="#" className="flex items-center gap-2.5">
+            <div className="h-9 w-9 rounded-lg bg-gradient-accent flex items-center justify-center shadow-glow">
+              <Zap className="h-5 w-5 text-white" />
+            </div>
+            <span className="font-display font-bold text-xl text-white tracking-tight">Lazarti</span>
+          </a>
+          <nav className="hidden lg:flex items-center gap-9 text-sm text-white/70">
+            <a href="#servicos" className="hover:text-white transition-colors">Serviços</a>
+            <a href="#diferenciais" className="hover:text-white transition-colors">Diferenciais</a>
+            <a href="#segmentos" className="hover:text-white transition-colors">Segmentos</a>
+            <a href="#parceiros" className="hover:text-white transition-colors">Parceiros</a>
+            <a href="#contato" className="hover:text-white transition-colors">Contato</a>
+          </nav>
+          <Button asChild className="bg-white text-navy-950 hover:bg-white/90 font-medium rounded-full px-5 h-10">
+            <a href="#contato">Falar com Especialista</a>
+          </Button>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-gradient-hero pt-32 pb-24 lg:pt-44 lg:pb-32">
+        <div className="absolute inset-0 grid-pattern opacity-40" />
+        <div className="absolute inset-0 bg-gradient-radial" />
+        <div className="container relative grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7 animate-fade-up">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/80 backdrop-blur">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary-glow animate-pulse" />
+              Lazarti Soluções em Tecnologia e Telecom
+            </div>
+            <h1 className="mt-6 font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] text-balance">
+              Tecnologia estratégica para empresas que exigem{" "}
+              <span className="bg-gradient-to-r from-primary-glow to-blue-300 bg-clip-text text-transparent">
+                performance, segurança e continuidade.
+              </span>
+            </h1>
+            <p className="mt-7 text-lg text-white/70 max-w-2xl leading-relaxed">
+              Soluções completas em TI, Cloud, Segurança e Infraestrutura para empresas que precisam
+              de estabilidade, produtividade e crescimento com suporte especializado.
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Button asChild size="lg" className="bg-gradient-accent text-white hover:opacity-95 rounded-full h-13 px-7 shadow-glow font-medium">
+                <a href="#contato">Solicitar Diagnóstico <ArrowRight className="ml-2 h-4 w-4" /></a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="rounded-full h-13 px-7 bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white font-medium">
+                <a href="#contato">Falar com um Especialista</a>
+              </Button>
+            </div>
+            <div className="mt-12 flex flex-wrap gap-x-10 gap-y-4 text-sm text-white/50">
+              <span className="flex items-center gap-2"><Check className="h-4 w-4 text-primary-glow" /> SLA corporativo</span>
+              <span className="flex items-center gap-2"><Check className="h-4 w-4 text-primary-glow" /> Monitoramento 24/7</span>
+              <span className="flex items-center gap-2"><Check className="h-4 w-4 text-primary-glow" /> Especialistas certificados</span>
+            </div>
+          </div>
+          <div className="lg:col-span-5 relative">
+            <div className="relative rounded-2xl overflow-hidden shadow-elegant border border-white/10">
+              <img src={heroImg} alt="Infraestrutura tecnológica corporativa Lazarti" width={1536} height={1280} className="w-full h-auto" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/60 to-transparent" />
+            </div>
+            <div className="absolute -bottom-6 -left-6 hidden md:block bg-white rounded-xl shadow-elegant p-5 border border-border max-w-[220px]">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-lg bg-gradient-accent flex items-center justify-center">
+                  <Shield className="h-5 w-5 text-white" />
+                </div>
+                <div>
+                  <div className="text-xs text-muted-foreground">Uptime</div>
+                  <div className="font-display font-bold text-navy-950">99.98%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AUTHORITY */}
+      <section className="border-y border-border bg-white">
+        <div className="container py-14 grid grid-cols-2 lg:grid-cols-4 gap-10">
+          {[
+            { k: "+8", l: "Anos de mercado" },
+            { k: "24/7", l: "Monitoramento contínuo" },
+            { k: "100%", l: "Atendimento especializado" },
+            { k: "∞", l: "Projetos personalizados" },
+          ].map((s) => (
+            <div key={s.l} className="text-center lg:text-left">
+              <div className="font-display text-4xl lg:text-5xl font-bold text-navy-950">{s.k}</div>
+              <div className="mt-2 text-sm text-muted-foreground">{s.l}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section id="servicos" className="py-24 lg:py-32 bg-gradient-subtle">
+        <div className="container">
+          <div className="max-w-2xl">
+            <div className="text-sm font-semibold uppercase tracking-widest text-accent">Serviços</div>
+            <h2 className="mt-3 font-display text-3xl lg:text-5xl font-bold text-navy-950 text-balance">
+              Soluções completas para a sua operação tecnológica.
+            </h2>
+            <p className="mt-5 text-lg text-muted-foreground">
+              Cobertura ponta a ponta com expertise enterprise — do suporte ao planejamento estratégico.
+            </p>
+          </div>
+
+          <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {services.map(({ icon: Icon, title, desc }) => (
+              <div key={title} className="group relative bg-white rounded-2xl p-8 border border-border shadow-card hover:shadow-elegant hover:-translate-y-1 transition-all duration-500">
+                <div className="h-12 w-12 rounded-xl bg-navy-950 flex items-center justify-center group-hover:bg-gradient-accent transition-colors">
+                  <Icon className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="mt-6 font-display text-xl font-semibold text-navy-950">{title}</h3>
+                <p className="mt-3 text-muted-foreground leading-relaxed">{desc}</p>
+                <div className="mt-6 flex items-center text-sm font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                  Saiba mais <ArrowRight className="ml-1 h-4 w-4" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* DIFFERENTIATORS */}
+      <section id="diferenciais" className="py-24 lg:py-32 bg-navy-950 relative overflow-hidden">
+        <div className="absolute inset-0 grid-pattern opacity-30" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial" />
+        <div className="container relative">
+          <div className="grid lg:grid-cols-2 gap-16 items-end mb-16">
+            <div>
+              <div className="text-sm font-semibold uppercase tracking-widest text-primary-glow">Diferenciais</div>
+              <h2 className="mt-3 font-display text-3xl lg:text-5xl font-bold text-white text-balance">
+                Por que escolher a Lazarti?
+              </h2>
+            </div>
+            <p className="text-lg text-white/60 max-w-xl">
+              Combinamos visão estratégica, execução técnica de alto nível e proximidade real com o cliente
+              para entregar tecnologia que sustenta crescimento.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10">
+            {differentiators.map(({ icon: Icon, title, desc }) => (
+              <div key={title} className="bg-navy-950 p-8 lg:p-10 hover:bg-navy-900 transition-colors">
+                <Icon className="h-7 w-7 text-primary-glow" strokeWidth={1.5} />
+                <h3 className="mt-5 font-display text-lg font-semibold text-white">{title}</h3>
+                <p className="mt-2 text-sm text-white/60 leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SEGMENTS */}
+      <section id="segmentos" className="py-24 lg:py-32">
+        <div className="container">
+          <div className="text-center max-w-2xl mx-auto">
+            <div className="text-sm font-semibold uppercase tracking-widest text-accent">Segmentos</div>
+            <h2 className="mt-3 font-display text-3xl lg:text-5xl font-bold text-navy-950 text-balance">
+              Atendemos quem opera com responsabilidade.
+            </h2>
+            <p className="mt-5 text-lg text-muted-foreground">
+              Empresas de diferentes setores confiam na Lazarti para sustentar suas operações críticas.
+            </p>
+          </div>
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {segments.map(({ icon: Icon, label }) => (
+              <div key={label} className="group flex flex-col items-center text-center p-6 rounded-xl border border-border hover:border-accent hover:shadow-card transition-all bg-white">
+                <Icon className="h-8 w-8 text-navy-950 group-hover:text-accent transition-colors" strokeWidth={1.5} />
+                <div className="mt-4 text-sm font-medium text-navy-950">{label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-24 lg:py-32 bg-secondary">
+        <div className="container">
+          <div className="max-w-2xl">
+            <div className="text-sm font-semibold uppercase tracking-widest text-accent">Clientes</div>
+            <h2 className="mt-3 font-display text-3xl lg:text-5xl font-bold text-navy-950 text-balance">
+              A confiança de quem opera no alto nível.
+            </h2>
+          </div>
+          <div className="mt-16 grid lg:grid-cols-3 gap-6">
+            {testimonials.map((t, i) => (
+              <figure key={i} className="bg-white rounded-2xl p-8 lg:p-10 border border-border shadow-card flex flex-col">
+                <div className="text-5xl font-display text-accent leading-none">"</div>
+                <blockquote className="mt-2 text-navy-950 leading-relaxed flex-1">{t.quote}</blockquote>
+                <figcaption className="mt-8 pt-6 border-t border-border">
+                  <div className="font-semibold text-navy-950">{t.author}</div>
+                  <div className="text-sm text-muted-foreground">{t.role}</div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PARTNERS */}
+      <section id="parceiros" className="py-20 border-y border-border">
+        <div className="container">
+          <div className="text-center text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+            Parceiros e tecnologias
+          </div>
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center">
+            {partners.map((p) => (
+              <div key={p} className="text-center font-display font-semibold text-navy-950/40 hover:text-navy-950 transition-colors text-lg">
+                {p}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section id="contato" className="py-24 lg:py-32 bg-gradient-hero relative overflow-hidden">
+        <div className="absolute inset-0 grid-pattern opacity-30" />
+        <div className="absolute inset-0 bg-gradient-radial" />
+        <div className="container relative text-center max-w-3xl mx-auto">
+          <h2 className="font-display text-3xl lg:text-5xl font-bold text-white text-balance leading-tight">
+            Sua operação precisa de uma TI mais{" "}
+            <span className="bg-gradient-to-r from-primary-glow to-blue-300 bg-clip-text text-transparent">
+              estratégica, segura e eficiente.
+            </span>
+          </h2>
+          <p className="mt-6 text-lg text-white/70">
+            Converse com um especialista Lazarti e receba um diagnóstico personalizado da sua operação.
+          </p>
+          <div className="mt-10 flex flex-wrap gap-4 justify-center">
+            <Button asChild size="lg" className="bg-gradient-accent text-white hover:opacity-95 rounded-full h-13 px-8 shadow-glow font-medium">
+              <a href="#">Solicitar uma Proposta <ArrowRight className="ml-2 h-4 w-4" /></a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-full h-13 px-8 bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white font-medium">
+              <a href="#">Falar no WhatsApp</a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-navy-950 text-white/70 pt-20 pb-10 border-t border-white/5">
+        <div className="container">
+          <div className="grid lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-4">
+              <div className="flex items-center gap-2.5">
+                <div className="h-9 w-9 rounded-lg bg-gradient-accent flex items-center justify-center">
+                  <Zap className="h-5 w-5 text-white" />
+                </div>
+                <span className="font-display font-bold text-xl text-white">Lazarti</span>
+              </div>
+              <p className="mt-5 text-sm leading-relaxed max-w-sm">
+                Soluções em Tecnologia e Telecom para empresas que exigem performance, segurança e continuidade operacional.
+              </p>
+              <div className="mt-6 flex gap-3">
+                {[Linkedin, Instagram, MessageCircle].map((Icon, i) => (
+                  <a key={i} href="#" className="h-10 w-10 rounded-lg border border-white/10 flex items-center justify-center hover:bg-white/5 hover:border-white/20 transition-colors">
+                    <Icon className="h-4 w-4" />
+                  </a>
+                ))}
+              </div>
+            </div>
+            <div className="lg:col-span-2">
+              <div className="font-display font-semibold text-white mb-4 text-sm">Soluções</div>
+              <ul className="space-y-3 text-sm">
+                <li><a href="#" className="hover:text-white">Terceirização TI</a></li>
+                <li><a href="#" className="hover:text-white">Cloud</a></li>
+                <li><a href="#" className="hover:text-white">Segurança</a></li>
+                <li><a href="#" className="hover:text-white">VoIP</a></li>
+              </ul>
+            </div>
+            <div className="lg:col-span-2">
+              <div className="font-display font-semibold text-white mb-4 text-sm">Empresa</div>
+              <ul className="space-y-3 text-sm">
+                <li><a href="#" className="hover:text-white">Sobre</a></li>
+                <li><a href="#" className="hover:text-white">Cases</a></li>
+                <li><a href="#" className="hover:text-white">Carreiras</a></li>
+                <li><a href="#" className="hover:text-white">Blog</a></li>
+              </ul>
+            </div>
+            <div className="lg:col-span-4">
+              <div className="font-display font-semibold text-white mb-4 text-sm">Contato</div>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-start gap-3"><Phone className="h-4 w-4 mt-0.5 text-primary-glow" /> +55 (11) 4000-0000</li>
+                <li className="flex items-start gap-3"><MessageCircle className="h-4 w-4 mt-0.5 text-primary-glow" /> WhatsApp Comercial</li>
+                <li className="flex items-start gap-3"><Mail className="h-4 w-4 mt-0.5 text-primary-glow" /> contato@lazarti.com.br</li>
+                <li className="flex items-start gap-3"><MapPin className="h-4 w-4 mt-0.5 text-primary-glow" /> Av. Paulista, 1000 — São Paulo, SP</li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between gap-4 text-xs text-white/40">
+            <div>© {new Date().getFullYear()} Lazarti Soluções em Tecnologia e Telecom. Todos os direitos reservados.</div>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-white">Privacidade</a>
+              <a href="#" className="hover:text-white">Termos</a>
+              <a href="#" className="hover:text-white">LGPD</a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
