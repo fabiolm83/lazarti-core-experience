@@ -1,4 +1,8 @@
 import heroImg from "@/assets/hero-tech.jpg";
+import slideCloud from "@/assets/service-cloud.jpg";
+import slideSecurity from "@/assets/service-security.jpg";
+import slideSupport from "@/assets/service-support.jpg";
+import slideVoip from "@/assets/service-voip.jpg";
 import {
   Shield, Cloud, Network, Phone, Headphones, Briefcase,
   ArrowRight, Check, Building2, Store, Factory, Stethoscope,
@@ -6,6 +10,36 @@ import {
   Instagram, Sparkles, Gauge, Lock, TrendingUp, Users, Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { useEffect, useRef, useState } from "react";
+
+const heroSlides = [
+  {
+    image: slideCloud,
+    eyebrow: "Cloud Computing",
+    title: "Sua infraestrutura na nuvem, com performance enterprise.",
+    desc: "Migração, gestão e otimização em AWS, Azure e Google Cloud com alta disponibilidade.",
+  },
+  {
+    image: slideSecurity,
+    eyebrow: "Segurança da Informação",
+    title: "Proteção avançada para dados e operações críticas.",
+    desc: "Defesa contra ameaças, compliance e continuidade operacional com camadas de segurança modernas.",
+  },
+  {
+    image: slideSupport,
+    eyebrow: "Terceirização de TI",
+    title: "Equipe técnica dedicada com SLA garantido.",
+    desc: "Suporte especializado, monitoramento 24/7 e gestão completa do seu ambiente tecnológico.",
+  },
+  {
+    image: slideVoip,
+    eyebrow: "Telefonia VoIP",
+    title: "Comunicação corporativa moderna e escalável.",
+    desc: "Telefonia integrada, com qualidade de áudio superior e custos significativamente menores.",
+  },
+];
 
 const services = [
   { icon: Headphones, title: "Terceirização de TI", desc: "Equipe técnica dedicada, SLA garantido e gestão completa do seu ambiente tecnológico." },
@@ -67,59 +101,8 @@ const Index = () => {
         </div>
       </header>
 
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-hero pt-32 pb-24 lg:pt-44 lg:pb-32">
-        <div className="absolute inset-0 grid-pattern opacity-40" />
-        <div className="absolute inset-0 bg-gradient-radial" />
-        <div className="container relative grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 animate-fade-up">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/80 backdrop-blur">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary-glow animate-pulse" />
-              Lazarti Soluções em Tecnologia e Telecom
-            </div>
-            <h1 className="mt-6 font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] text-balance">
-              Tecnologia estratégica para empresas que exigem{" "}
-              <span className="bg-gradient-to-r from-primary-glow to-blue-300 bg-clip-text text-transparent">
-                performance, segurança e continuidade.
-              </span>
-            </h1>
-            <p className="mt-7 text-lg text-white/70 max-w-2xl leading-relaxed">
-              Soluções completas em TI, Cloud, Segurança e Infraestrutura para empresas que precisam
-              de estabilidade, produtividade e crescimento com suporte especializado.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button asChild size="lg" className="bg-gradient-accent text-white hover:opacity-95 rounded-full h-13 px-7 shadow-glow font-medium">
-                <a href="#contato">Solicitar Diagnóstico <ArrowRight className="ml-2 h-4 w-4" /></a>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full h-13 px-7 bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white font-medium">
-                <a href="#contato">Falar com um Especialista</a>
-              </Button>
-            </div>
-            <div className="mt-12 flex flex-wrap gap-x-10 gap-y-4 text-sm text-white/50">
-              <span className="flex items-center gap-2"><Check className="h-4 w-4 text-primary-glow" /> SLA corporativo</span>
-              <span className="flex items-center gap-2"><Check className="h-4 w-4 text-primary-glow" /> Monitoramento 24/7</span>
-              <span className="flex items-center gap-2"><Check className="h-4 w-4 text-primary-glow" /> Especialistas certificados</span>
-            </div>
-          </div>
-          <div className="lg:col-span-5 relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-elegant border border-white/10">
-              <img src={heroImg} alt="Infraestrutura tecnológica corporativa Lazarti" width={1536} height={1280} className="w-full h-auto" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/60 to-transparent" />
-            </div>
-            <div className="absolute -bottom-6 -left-6 hidden md:block bg-white rounded-xl shadow-elegant p-5 border border-border max-w-[220px]">
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-lg bg-gradient-accent flex items-center justify-center">
-                  <Shield className="h-5 w-5 text-white" />
-                </div>
-                <div>
-                  <div className="text-xs text-muted-foreground">Uptime</div>
-                  <div className="font-display font-bold text-navy-950">99.98%</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* HERO CAROUSEL */}
+      <HeroCarousel />
 
       {/* AUTHORITY */}
       <section className="border-y border-border bg-white">
