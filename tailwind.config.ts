@@ -13,7 +13,17 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Sora', 'Inter', 'sans-serif'],
+      },
       colors: {
+        navy: {
+          950: 'hsl(var(--navy-950))',
+          900: 'hsl(var(--navy-900))',
+          800: 'hsl(var(--navy-800))',
+        },
+        'primary-glow': 'hsl(var(--primary-glow))',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
