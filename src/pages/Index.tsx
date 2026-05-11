@@ -392,7 +392,7 @@ const Index = () => {
                 <li className="flex items-start gap-3"><Phone className="h-4 w-4 mt-0.5 text-primary-glow" /> +55 (11) 4861-4030</li>
                 <li className="flex items-start gap-3"><MessageCircle className="h-4 w-4 mt-0.5 text-primary-glow" /> WhatsApp Comercial</li>
                 <li className="flex items-start gap-3"><Mail className="h-4 w-4 mt-0.5 text-primary-glow" /> contato@lazarti.com.br</li>
-                <li className="flex items-start gap-3"><MapPin className="h-4 w-4 mt-0.5 text-primary-glow" /> Av. Paulista, 1000 — São Paulo, SP</li>
+                <li className="flex items-start gap-3"><MapPin className="h-4 w-4 mt-0.5 text-primary-glow" /> R. Barão de Itapetininga, 273 - 4º Andar Sala C República - São Paulo - SP - Cep: 01042-001</li>
               </ul>
             </div>
           </div>
