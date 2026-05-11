@@ -343,10 +343,10 @@ const Index = () => {
           <div className="text-center text-sm font-semibold uppercase tracking-widest text-muted-foreground">
             Parceiros e tecnologias
           </div>
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center">
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-8 gap-y-10 items-center">
             {partners.map((p) => (
-              <div key={p} className="text-center font-display font-semibold text-navy-950/40 hover:text-navy-950 transition-colors text-lg">
-                {p}
+              <div key={p.name} className="flex items-center justify-center h-16 px-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src={p.logo} alt={`${p.name} logo`} loading="lazy" className="max-h-10 max-w-[140px] w-auto h-auto object-contain" />
               </div>
             ))}
           </div>
