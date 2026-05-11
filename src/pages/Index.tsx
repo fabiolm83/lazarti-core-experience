@@ -47,7 +47,7 @@ const services = [
   { icon: Network, title: "Infraestrutura e Redes", desc: "Projetos robustos de rede, servidores e estruturação de data centers corporativos." },
   { icon: Shield, title: "Segurança da Informação", desc: "Proteção avançada contra ameaças, compliance e continuidade operacional." },
   { icon: Cloud, title: "Soluções em Cloud", desc: "Migração, gestão e otimização de ambientes em nuvem AWS, Azure e Google Cloud." },
-  { icon: Phone, title: "Telefonia VoIP", desc: "Comunicação corporativa moderna, escalável e integrada ao seu fluxo de trabalho." },
+  { icon: Activity, title: "Monitoramento 24/7", desc: "NOC próprio com dashboards em tempo real, alertas inteligentes e uptime garantido." },
 ];
 
 const differentiators = [
