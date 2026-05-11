@@ -2,9 +2,9 @@ import heroImg from "@/assets/hero-tech.jpg";
 import slideCloud from "@/assets/service-cloud.jpg";
 import slideSecurity from "@/assets/service-security.jpg";
 import slideSupport from "@/assets/service-support.jpg";
-import slideVoip from "@/assets/service-voip.jpg";
+import slideMonitoring from "@/assets/service-monitoring.jpg";
 import {
-  Shield, Cloud, Network, Phone, Headphones, Briefcase,
+  Shield, Cloud, Network, Phone, Activity, Headphones, Briefcase,
   ArrowRight, Check, Building2, Store, Factory, Stethoscope,
   Layers, ClipboardList, Mail, MapPin, MessageCircle, Linkedin,
   Instagram, Sparkles, Gauge, Lock, TrendingUp, Users, Zap,
@@ -34,10 +34,10 @@ const heroSlides = [
     desc: "Suporte especializado, monitoramento 24/7 e gestão completa do seu ambiente tecnológico.",
   },
   {
-    image: slideVoip,
-    eyebrow: "Telefonia VoIP",
-    title: "Comunicação corporativa moderna e escalável.",
-    desc: "Telefonia integrada, com qualidade de áudio superior e custos significativamente menores.",
+    image: slideMonitoring,
+    eyebrow: "Monitoramento 24/7",
+    title: "Visibilidade total do seu ambiente, a toda hora.",
+    desc: "NOC próprio com dashboards em tempo real, alertas inteligentes e resposta proativa para máxima uptime.",
   },
 ];
 
@@ -47,7 +47,7 @@ const services = [
   { icon: Network, title: "Infraestrutura e Redes", desc: "Projetos robustos de rede, servidores e estruturação de data centers corporativos." },
   { icon: Shield, title: "Segurança da Informação", desc: "Proteção avançada contra ameaças, compliance e continuidade operacional." },
   { icon: Cloud, title: "Soluções em Cloud", desc: "Migração, gestão e otimização de ambientes em nuvem AWS, Azure e Google Cloud." },
-  { icon: Phone, title: "Telefonia VoIP", desc: "Comunicação corporativa moderna, escalável e integrada ao seu fluxo de trabalho." },
+  { icon: Activity, title: "Monitoramento 24/7", desc: "NOC próprio com dashboards em tempo real, alertas inteligentes e uptime garantido." },
 ];
 
 const differentiators = [
@@ -374,7 +374,7 @@ const Index = () => {
                 <li><a href="#" className="hover:text-white">Terceirização TI</a></li>
                 <li><a href="#" className="hover:text-white">Cloud</a></li>
                 <li><a href="#" className="hover:text-white">Segurança</a></li>
-                <li><a href="#" className="hover:text-white">VoIP</a></li>
+                <li><a href="#" className="hover:text-white">Monitoramento 24/7</a></li>
               </ul>
             </div>
             <div className="lg:col-span-2">
