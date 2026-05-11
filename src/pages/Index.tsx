@@ -74,7 +74,39 @@ const testimonials = [
   { quote: "Parceria estratégica de verdade. A consultoria deles redefiniu nossa estrutura tecnológica em 6 meses.", author: "Fernanda Lopes", role: "CEO, RedeSaúde+" },
 ];
 
-const partners = ["Microsoft", "AWS", "Google Cloud", "Cisco", "Fortinet", "VMware", "Veeam", "Sophos"];
+import partnerMicrosoft from "@/assets/partners/microsoft.svg";
+import partnerAws from "@/assets/partners/aws.svg";
+import partnerGoogleCloud from "@/assets/partners/googlecloud.svg";
+import partnerCisco from "@/assets/partners/cisco.svg";
+import partnerFortinet from "@/assets/partners/fortinet.svg";
+import partnerVmware from "@/assets/partners/vmware.svg";
+import partnerVeeam from "@/assets/partners/veeam.svg";
+import partnerSophos from "@/assets/partners/sophos.png";
+import partnerAhsay from "@/assets/partners/ahsay.png";
+import partnerDell from "@/assets/partners/dell.svg";
+import partnerLenovo from "@/assets/partners/lenovo.svg";
+import partnerMikrotik from "@/assets/partners/mikrotik.svg";
+import partnerMilvus from "@/assets/partners/milvus.svg";
+import partnerZabbix from "@/assets/partners/zabbix.svg";
+import partnerHp from "@/assets/partners/hp.svg";
+
+const partners = [
+  { name: "Microsoft", logo: partnerMicrosoft },
+  { name: "AWS", logo: partnerAws },
+  { name: "Google Cloud", logo: partnerGoogleCloud },
+  { name: "Cisco", logo: partnerCisco },
+  { name: "Fortinet", logo: partnerFortinet },
+  { name: "VMware", logo: partnerVmware },
+  { name: "Veeam", logo: partnerVeeam },
+  { name: "Sophos", logo: partnerSophos },
+  { name: "Ahsay Backup", logo: partnerAhsay },
+  { name: "Dell", logo: partnerDell },
+  { name: "Lenovo", logo: partnerLenovo },
+  { name: "Mikrotik", logo: partnerMikrotik },
+  { name: "Milvus", logo: partnerMilvus },
+  { name: "Zabbix", logo: partnerZabbix },
+  { name: "HP", logo: partnerHp },
+];
 
 const HeroCarousel = () => {
   const autoplay = useRef(Autoplay({ delay: 5500, stopOnInteraction: false }));
@@ -311,10 +343,10 @@ const Index = () => {
           <div className="text-center text-sm font-semibold uppercase tracking-widest text-muted-foreground">
             Parceiros e tecnologias
           </div>
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center">
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-8 gap-y-10 items-center">
             {partners.map((p) => (
-              <div key={p} className="text-center font-display font-semibold text-navy-950/40 hover:text-navy-950 transition-colors text-lg">
-                {p}
+              <div key={p.name} className="flex items-center justify-center h-16 px-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src={p.logo} alt={`${p.name} logo`} loading="lazy" className="max-h-10 max-w-[140px] w-auto h-auto object-contain" />
               </div>
             ))}
           </div>
