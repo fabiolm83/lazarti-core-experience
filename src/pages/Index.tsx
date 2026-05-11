@@ -2,7 +2,7 @@ import heroImg from "@/assets/hero-tech.jpg";
 import slideCloud from "@/assets/service-cloud.jpg";
 import slideSecurity from "@/assets/service-security.jpg";
 import slideSupport from "@/assets/service-support.jpg";
-import slideVoip from "@/assets/service-voip.jpg";
+import slideMonitoring from "@/assets/service-monitoring.jpg";
 import {
   Shield, Cloud, Network, Phone, Headphones, Briefcase,
   ArrowRight, Check, Building2, Store, Factory, Stethoscope,
