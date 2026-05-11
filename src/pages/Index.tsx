@@ -34,10 +34,10 @@ const heroSlides = [
     desc: "Suporte especializado, monitoramento 24/7 e gestão completa do seu ambiente tecnológico.",
   },
   {
-    image: slideVoip,
-    eyebrow: "Telefonia VoIP",
-    title: "Comunicação corporativa moderna e escalável.",
-    desc: "Telefonia integrada, com qualidade de áudio superior e custos significativamente menores.",
+    image: slideMonitoring,
+    eyebrow: "Monitoramento 24/7",
+    title: "Visibilidade total do seu ambiente, a toda hora.",
+    desc: "NOC próprio com dashboards em tempo real, alertas inteligentes e resposta proativa para máxima uptime.",
   },
 ];
 
