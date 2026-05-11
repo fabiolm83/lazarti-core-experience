@@ -158,7 +158,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* NAV */}
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-navy-950/70 border-b border-white/5">
-        <div className="container flex h-20 items-center justify-between">
+        <div className="container flex h-20 items-center justify-between border-none">
           <a href="#" className="flex items-center gap-2.5">
             <div className="h-9 w-9 rounded-lg bg-gradient-accent flex items-center justify-center shadow-glow">
               <Zap className="h-5 w-5 text-white" />
