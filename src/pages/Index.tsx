@@ -74,7 +74,39 @@ const testimonials = [
   { quote: "Parceria estratégica de verdade. A consultoria deles redefiniu nossa estrutura tecnológica em 6 meses.", author: "Fernanda Lopes", role: "CEO, RedeSaúde+" },
 ];
 
-const partners = ["Microsoft", "AWS", "Google Cloud", "Cisco", "Fortinet", "VMware", "Veeam", "Sophos"];
+import partnerMicrosoft from "@/assets/partners/microsoft.svg";
+import partnerAws from "@/assets/partners/aws.svg";
+import partnerGoogleCloud from "@/assets/partners/googlecloud.svg";
+import partnerCisco from "@/assets/partners/cisco.svg";
+import partnerFortinet from "@/assets/partners/fortinet.svg";
+import partnerVmware from "@/assets/partners/vmware.svg";
+import partnerVeeam from "@/assets/partners/veeam.svg";
+import partnerSophos from "@/assets/partners/sophos.png";
+import partnerAhsay from "@/assets/partners/ahsay.png";
+import partnerDell from "@/assets/partners/dell.svg";
+import partnerLenovo from "@/assets/partners/lenovo.svg";
+import partnerMikrotik from "@/assets/partners/mikrotik.svg";
+import partnerMilvus from "@/assets/partners/milvus.svg";
+import partnerZabbix from "@/assets/partners/zabbix.svg";
+import partnerHp from "@/assets/partners/hp.svg";
+
+const partners = [
+  { name: "Microsoft", logo: partnerMicrosoft },
+  { name: "AWS", logo: partnerAws },
+  { name: "Google Cloud", logo: partnerGoogleCloud },
+  { name: "Cisco", logo: partnerCisco },
+  { name: "Fortinet", logo: partnerFortinet },
+  { name: "VMware", logo: partnerVmware },
+  { name: "Veeam", logo: partnerVeeam },
+  { name: "Sophos", logo: partnerSophos },
+  { name: "Ahsay Backup", logo: partnerAhsay },
+  { name: "Dell", logo: partnerDell },
+  { name: "Lenovo", logo: partnerLenovo },
+  { name: "Mikrotik", logo: partnerMikrotik },
+  { name: "Milvus", logo: partnerMilvus },
+  { name: "Zabbix", logo: partnerZabbix },
+  { name: "HP", logo: partnerHp },
+];
 
 const HeroCarousel = () => {
   const autoplay = useRef(Autoplay({ delay: 5500, stopOnInteraction: false }));
