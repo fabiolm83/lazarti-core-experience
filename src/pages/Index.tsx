@@ -188,7 +188,7 @@ const Index = () => {
             { k: "+8", l: "Anos de mercado" },
             { k: "24/7", l: "Monitoramento contínuo" },
             { k: "100%", l: "Atendimento especializado" },
-            { k: "∞", l: "Projetos personalizados" },
+            { k: "98+", l: "Projetos personalizados" },
           ].map((s) => (
             <div key={s.l} className="text-center lg:text-left">
               <div className="font-display text-4xl lg:text-5xl font-bold text-navy-950">{s.k}</div>
