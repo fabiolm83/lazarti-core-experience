@@ -4,7 +4,7 @@ import slideSecurity from "@/assets/service-security.jpg";
 import slideSupport from "@/assets/service-support.jpg";
 import slideMonitoring from "@/assets/service-monitoring.jpg";
 import {
-  Shield, Cloud, Network, Activity, Headphones, Briefcase,
+  Shield, Cloud, Network, Phone, Activity, Headphones, Briefcase,
   ArrowRight, Check, Building2, Store, Factory, Stethoscope,
   Layers, ClipboardList, Mail, MapPin, MessageCircle, Linkedin,
   Instagram, Sparkles, Gauge, Lock, TrendingUp, Users, Zap,
