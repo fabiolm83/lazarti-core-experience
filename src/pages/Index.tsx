@@ -374,7 +374,7 @@ const Index = () => {
                 <li><a href="#" className="hover:text-white">Terceirização TI</a></li>
                 <li><a href="#" className="hover:text-white">Cloud</a></li>
                 <li><a href="#" className="hover:text-white">Segurança</a></li>
-                <li><a href="#" className="hover:text-white">VoIP</a></li>
+                <li><a href="#" className="hover:text-white">Monitoramento 24/7</a></li>
               </ul>
             </div>
             <div className="lg:col-span-2">
