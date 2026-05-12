@@ -1,4 +1,5 @@
 import heroImg from "@/assets/hero-tech.jpg";
+import logo from "@/assets/logo.png";
 import slideCloud from "@/assets/service-cloud.jpg";
 import slideSecurity from "@/assets/service-security.jpg";
 import slideSupport from "@/assets/service-support.jpg";
@@ -191,11 +192,10 @@ const Index = () => {
       {/* NAV */}
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-navy-950/70 border-b border-white/5">
         <div className="container flex h-20 items-center justify-between border-none">
-          <a href="#" className="flex items-center gap-2.5">
-            <div className="h-9 w-9 rounded-lg bg-gradient-accent flex items-center justify-center shadow-glow">
-              <Zap className="h-5 w-5 text-white" />
+          <a href="#" className="flex items-center">
+            <div className="bg-white rounded-lg px-3 py-1.5 shadow-glow">
+              <img src={logo} alt="Lazarti - Soluções em Tecnologia" className="h-8 w-auto" />
             </div>
-            <span className="font-display font-bold text-xl text-white tracking-tight">Lazarti</span>
           </a>
           <nav className="hidden lg:flex items-center gap-9 text-sm text-white/70">
             <a href="#servicos" className="hover:text-white transition-colors">Serviços</a>
@@ -383,11 +383,8 @@ const Index = () => {
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4">
-              <div className="flex items-center gap-2.5">
-                <div className="h-9 w-9 rounded-lg bg-gradient-accent flex items-center justify-center">
-                  <Zap className="h-5 w-5 text-white" />
-                </div>
-                <span className="font-display font-bold text-xl text-white">Lazarti</span>
+              <div className="inline-flex items-center bg-white rounded-lg px-3 py-1.5">
+                <img src={logo} alt="Lazarti - Soluções em Tecnologia" className="h-9 w-auto" />
               </div>
               <p className="mt-5 text-sm leading-relaxed max-w-sm">
                 Soluções em Tecnologia e Telecom para empresas que exigem performance, segurança e continuidade operacional.
