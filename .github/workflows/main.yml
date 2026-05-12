@@ -1,4 +1,4 @@
-name: Deploy-Lovable
+name: deploy-lovable
 on:
   push:
     branches:
@@ -7,16 +7,13 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v4
-
-      - name: Instalacao
-        run: /usr/local/bin/bun install
-
-      - name: Build
-        run: /usr/local/bin/bun run build
-
-      - name: Deploy-Arquivos
+      - name: build
+        run: |
+          /usr/local/bin/bun install
+          /usr/local/bin/bun run build
+      - name: sync
         run: |
           sudo /usr/bin/mkdir -p /var/www/html/meu-site
           sudo /usr/bin/cp -r dist/. /var/www/html/meu-site/
