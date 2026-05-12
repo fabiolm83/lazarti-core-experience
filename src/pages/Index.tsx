@@ -190,21 +190,21 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* NAV */}
-      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-navy-950/70 border-b border-white/5">
+      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-white/95 border-b border-border shadow-sm">
         <div className="container flex h-20 items-center justify-between border-none">
           <a href="#" className="flex items-center">
-            <div className="bg-white rounded-lg px-3 py-1.5 shadow-glow">
-              <img src={logo} alt="Lazarti - Soluções em Tecnologia" className="h-8 w-auto" />
+            <div className="bg-white rounded-lg px-3 py-1.5 shadow-elegant border border-border">
+              <img src={logo} alt="Lazarti - Soluções em Tecnologia" className="h-10 w-auto" />
             </div>
           </a>
-          <nav className="hidden lg:flex items-center gap-9 text-sm text-white/70">
-            <a href="#servicos" className="hover:text-white transition-colors">Serviços</a>
-            <a href="#diferenciais" className="hover:text-white transition-colors">Diferenciais</a>
-            <a href="#segmentos" className="hover:text-white transition-colors">Segmentos</a>
-            <a href="#parceiros" className="hover:text-white transition-colors">Parceiros</a>
-            <a href="#contato" className="hover:text-white transition-colors">Contato</a>
+          <nav className="hidden lg:flex items-center gap-9 text-sm text-navy-950/70">
+            <a href="#servicos" className="hover:text-navy-950 transition-colors">Serviços</a>
+            <a href="#diferenciais" className="hover:text-navy-950 transition-colors">Diferenciais</a>
+            <a href="#segmentos" className="hover:text-navy-950 transition-colors">Segmentos</a>
+            <a href="#parceiros" className="hover:text-navy-950 transition-colors">Parceiros</a>
+            <a href="#contato" className="hover:text-navy-950 transition-colors">Contato</a>
           </nav>
-          <Button asChild className="bg-white text-navy-950 hover:bg-white/90 font-medium rounded-full px-5 h-10">
+          <Button asChild className="bg-gradient-accent text-white hover:opacity-95 font-medium rounded-full px-5 h-10">
             <a href="#contato">Falar com Especialista</a>
           </Button>
         </div>
