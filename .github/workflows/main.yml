@@ -11,19 +11,13 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Instalar Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
+      - name: Instalar dependências
+        run: bun install
 
       - name: Build do Site
-        run: |
-          bun install
-          bun run build
+        run: bun run build
 
       - name: Atualizar pasta do Servidor
         run: |
-          # Cria a pasta caso não exista
           sudo mkdir -p /var/www/html/meu-site
-          # Limpa o conteúdo antigo e copia o novo build (pasta dist)
-          sudo cp -r dist/* /var/www/html/meu-site/
+          sudo cp -r dist/. /var/www/html/meu-site/
