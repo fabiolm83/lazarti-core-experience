@@ -9,10 +9,13 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+
       - name: build
         run: |
-          /usr/local/bin/bun install
-          /usr/local/bin/bun run build
+          export PATH="$HOME/.bun/bin:$PATH"
+          bun install
+          bun run build
+
       - name: sync
         run: |
           sudo /usr/bin/mkdir -p /var/www/html/meu-site
