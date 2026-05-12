@@ -137,9 +137,6 @@ const HeroCarousel = () => {
             <CarouselItem key={i}>
               <div className="container relative grid lg:grid-cols-12 gap-12 items-center pt-12 pb-20 lg:pt-24 lg:pb-28 min-h-[600px] lg:min-h-[680px]">
                 <div className="lg:col-span-7 animate-fade-up">
-                  <div className="mb-6 inline-flex items-center justify-center rounded-2xl bg-white/95 p-3 shadow-elegant border border-white/20">
-                    <img src={logo} alt="Lazarti" className="h-10 w-auto" />
-                  </div>
                   <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/80 backdrop-blur">
                     <span className="h-1.5 w-1.5 rounded-full bg-primary-glow animate-pulse" />
                     {slide.eyebrow}
