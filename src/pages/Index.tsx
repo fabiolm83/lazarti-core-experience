@@ -1,19 +1,20 @@
-import heroImg from "@/assets/hero-tech.jpg";
-import logo from "@/assets/logo.png";
+
 import slideCloud from "@/assets/service-cloud.jpg";
 import slideSecurity from "@/assets/service-security.jpg";
 import slideSupport from "@/assets/service-support.jpg";
 import slideMonitoring from "@/assets/service-monitoring.jpg";
 import {
-  Shield, Cloud, Network, Phone, Activity, Headphones, Briefcase,
   ArrowRight, Check, Building2, Store, Factory, Stethoscope,
-  Layers, ClipboardList, Mail, MapPin, MessageCircle, Linkedin,
-  Instagram, Sparkles, Gauge, Lock, TrendingUp, Users, Zap,
+  Layers, ClipboardList, Sparkles, Gauge, Lock, TrendingUp, Users,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { useEffect, useRef, useState } from "react";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
+import { services } from "@/data/services";
 
 const heroSlides = [
   {
@@ -40,15 +41,6 @@ const heroSlides = [
     title: "Visibilidade total do seu ambiente, a toda hora.",
     desc: "NOC próprio com dashboards em tempo real, alertas inteligentes e resposta proativa para máxima uptime.",
   },
-];
-
-const services = [
-  { icon: Headphones, title: "Terceirização de TI", desc: "Equipe técnica dedicada, SLA garantido e gestão completa do seu ambiente tecnológico." },
-  { icon: Briefcase, title: "Consultoria Estratégica", desc: "Planejamento tecnológico alinhado aos objetivos de negócio e crescimento sustentável." },
-  { icon: Network, title: "Infraestrutura e Redes", desc: "Projetos robustos de rede, servidores e estruturação de data centers corporativos." },
-  { icon: Shield, title: "Segurança da Informação", desc: "Proteção avançada contra ameaças, compliance e continuidade operacional." },
-  { icon: Cloud, title: "Soluções em Cloud", desc: "Migração, gestão e otimização de ambientes em nuvem AWS, Azure e Google Cloud." },
-  { icon: Activity, title: "Monitoramento 24/7", desc: "NOC próprio com dashboards em tempo real, alertas inteligentes e uptime garantido." },
 ];
 
 const differentiators = [
@@ -149,10 +141,10 @@ const HeroCarousel = () => {
                   <p className="mt-7 text-lg text-white/70 max-w-2xl leading-relaxed">{slide.desc}</p>
                   <div className="mt-10 flex flex-wrap gap-4">
                     <Button asChild size="lg" className="bg-gradient-accent text-white hover:opacity-95 rounded-full h-13 px-7 shadow-glow font-medium">
-                      <a href="#contato">Solicitar Diagnóstico <ArrowRight className="ml-2 h-4 w-4" /></a>
+                      <Link to="/contato">Solicitar Diagnóstico <ArrowRight className="ml-2 h-4 w-4" /></Link>
                     </Button>
                     <Button asChild size="lg" variant="outline" className="rounded-full h-13 px-7 bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white font-medium">
-                      <a href="#servicos">Ver Soluções</a>
+                      <Link to="/servicos">Ver Soluções</Link>
                     </Button>
                   </div>
                   <div className="mt-12 flex flex-wrap gap-x-10 gap-y-4 text-sm text-white/50">
@@ -189,28 +181,8 @@ const HeroCarousel = () => {
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      {/* NAV */}
-      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-white/95 border-b border-border shadow-sm">
-        <div className="container flex h-20 items-center justify-between border-none">
-          <a href="#" className="flex items-center">
-            <div className="bg-white rounded-lg px-3 py-1.5 shadow-elegant border border-border">
-              <img src={logo} alt="Lazarti - Soluções em Tecnologia" className="h-10 w-auto" />
-            </div>
-          </a>
-          <nav className="hidden lg:flex items-center gap-9 text-sm text-navy-950/70">
-            <a href="#servicos" className="hover:text-navy-950 transition-colors">Serviços</a>
-            <a href="#diferenciais" className="hover:text-navy-950 transition-colors">Diferenciais</a>
-            <a href="#segmentos" className="hover:text-navy-950 transition-colors">Segmentos</a>
-            <a href="#parceiros" className="hover:text-navy-950 transition-colors">Parceiros</a>
-            <a href="#contato" className="hover:text-navy-950 transition-colors">Contato</a>
-          </nav>
-          <Button asChild className="bg-gradient-accent text-white hover:opacity-95 font-medium rounded-full px-5 h-10">
-            <a href="#contato">Falar com Especialista</a>
-          </Button>
-        </div>
-      </header>
+      <SiteHeader />
 
-      {/* HERO CAROUSEL */}
       <HeroCarousel />
 
       {/* AUTHORITY */}
@@ -244,8 +216,12 @@ const Index = () => {
           </div>
 
           <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {services.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="group relative bg-white rounded-2xl p-8 border border-border shadow-card hover:shadow-elegant hover:-translate-y-1 transition-all duration-500">
+            {services.map(({ icon: Icon, title, desc, slug }) => (
+              <Link
+                key={slug}
+                to={`/servicos/${slug}`}
+                className="group relative bg-white rounded-2xl p-8 border border-border shadow-card hover:shadow-elegant hover:-translate-y-1 transition-all duration-500"
+              >
                 <div className="h-12 w-12 rounded-xl bg-navy-950 flex items-center justify-center group-hover:bg-gradient-accent transition-colors">
                   <Icon className="h-6 w-6 text-white" />
                 </div>
@@ -254,7 +230,7 @@ const Index = () => {
                 <div className="mt-6 flex items-center text-sm font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity">
                   Saiba mais <ArrowRight className="ml-1 h-4 w-4" />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -287,6 +263,12 @@ const Index = () => {
               </div>
             ))}
           </div>
+
+          <div className="mt-10 text-center">
+            <Button asChild variant="outline" className="rounded-full bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white">
+              <Link to="/diferenciais">Conheça todos os diferenciais <ArrowRight className="ml-2 h-4 w-4" /></Link>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -304,10 +286,10 @@ const Index = () => {
           </div>
           <div className="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {segments.map(({ icon: Icon, label }) => (
-              <div key={label} className="group flex flex-col items-center text-center p-6 rounded-xl border border-border hover:border-accent hover:shadow-card transition-all bg-white">
+              <Link key={label} to="/segmentos" className="group flex flex-col items-center text-center p-6 rounded-xl border border-border hover:border-accent hover:shadow-card transition-all bg-white">
                 <Icon className="h-8 w-8 text-navy-950 group-hover:text-accent transition-colors" strokeWidth={1.5} />
                 <div className="mt-4 text-sm font-medium text-navy-950">{label}</div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -345,9 +327,9 @@ const Index = () => {
           </div>
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-8 gap-y-10 items-center">
             {partners.map((p) => (
-              <div key={p.name} className="flex items-center justify-center h-16 px-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+              <Link key={p.name} to="/parceiros" className="flex items-center justify-center h-16 px-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
                 <img src={p.logo} alt={`${p.name} logo`} loading="lazy" className="max-h-10 max-w-[140px] w-auto h-auto object-contain" />
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -369,72 +351,16 @@ const Index = () => {
           </p>
           <div className="mt-10 flex flex-wrap gap-4 justify-center">
             <Button asChild size="lg" className="bg-gradient-accent text-white hover:opacity-95 rounded-full h-13 px-8 shadow-glow font-medium">
-              <a href="#">Solicitar uma Proposta <ArrowRight className="ml-2 h-4 w-4" /></a>
+              <Link to="/contato">Solicitar uma Proposta <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="rounded-full h-13 px-8 bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white font-medium">
-              <a href="#">Falar no WhatsApp</a>
+              <Link to="/contato">Falar com Especialista</Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-navy-950 text-white/70 pt-20 pb-10 border-t border-white/5">
-        <div className="container">
-          <div className="grid lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-4">
-              <div className="inline-flex items-center bg-white rounded-lg px-3 py-1.5">
-                <img src={logo} alt="Lazarti - Soluções em Tecnologia" className="h-9 w-auto" />
-              </div>
-              <p className="mt-5 text-sm leading-relaxed max-w-sm">
-                Soluções em Tecnologia e Telecom para empresas que exigem performance, segurança e continuidade operacional.
-              </p>
-              <div className="mt-6 flex gap-3">
-                {[Linkedin, Instagram, MessageCircle].map((Icon, i) => (
-                  <a key={i} href="#" className="h-10 w-10 rounded-lg border border-white/10 flex items-center justify-center hover:bg-white/5 hover:border-white/20 transition-colors">
-                    <Icon className="h-4 w-4" />
-                  </a>
-                ))}
-              </div>
-            </div>
-            <div className="lg:col-span-2">
-              <div className="font-display font-semibold text-white mb-4 text-sm">Soluções</div>
-              <ul className="space-y-3 text-sm">
-                <li><a href="#" className="hover:text-white">Terceirização TI</a></li>
-                <li><a href="#" className="hover:text-white">Cloud</a></li>
-                <li><a href="#" className="hover:text-white">Segurança</a></li>
-                <li><a href="#" className="hover:text-white">Monitoramento 24/7</a></li>
-              </ul>
-            </div>
-            <div className="lg:col-span-2">
-              <div className="font-display font-semibold text-white mb-4 text-sm">Empresa</div>
-              <ul className="space-y-3 text-sm">
-                <li><a href="#" className="hover:text-white">Sobre</a></li>
-                <li><a href="#" className="hover:text-white">Cases</a></li>
-                <li><a href="#" className="hover:text-white">Carreiras</a></li>
-                <li><a href="#" className="hover:text-white">Blog</a></li>
-              </ul>
-            </div>
-            <div className="lg:col-span-4">
-              <div className="font-display font-semibold text-white mb-4 text-sm">Contato</div>
-              <ul className="space-y-3 text-sm">
-                <li className="flex items-start gap-3"><Phone className="h-4 w-4 mt-0.5 text-primary-glow" /> +55 (11) 4861-4030</li>
-                <li className="flex items-start gap-3"><MessageCircle className="h-4 w-4 mt-0.5 text-primary-glow" /> WhatsApp: +55 (11) 4861-4030</li>
-                <li className="flex items-start gap-3"><Mail className="h-4 w-4 mt-0.5 text-primary-glow" /> contato@lazarti.com.br</li>
-                <li className="flex items-start gap-3"><MapPin className="h-4 w-4 mt-0.5 text-primary-glow" /> R. Barão de Itapetininga, 273 - 4º Andar Sala C República - São Paulo - SP - Cep: 01042-001</li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between gap-4 text-xs text-white/40">
-            <div>© {new Date().getFullYear()} Lazarti Soluções em Tecnologia e Telecom. Todos os direitos reservados.</div>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-white">Privacidade</a>
-              <a href="#" className="hover:text-white">Termos</a>
-              <a href="#" className="hover:text-white">LGPD</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 };
