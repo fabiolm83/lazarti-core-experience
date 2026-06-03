@@ -1,4 +1,4 @@
-import heroImg from "@/assets/hero-tech.jpg";
+
 import slideCloud from "@/assets/service-cloud.jpg";
 import slideSecurity from "@/assets/service-security.jpg";
 import slideSupport from "@/assets/service-support.jpg";
