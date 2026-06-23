@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navItems = [
+  { to: "/", label: "Página Inicial" },
   { to: "/servicos", label: "Serviços" },
   { to: "/diferenciais", label: "Diferenciais" },
   { to: "/segmentos", label: "Segmentos" },

@@ -327,8 +327,11 @@ const Index = () => {
       {/* PARTNERS */}
       <section id="parceiros" className="py-20 border-y border-border bg-white">
         <div className="container">
-          <div className="text-center text-sm font-semibold uppercase tracking-widest text-muted-foreground mb-12">
-            Parceiros e tecnologias
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="text-sm font-semibold uppercase tracking-widest text-accent">Parceiros e tecnologias</div>
+            <h2 className="mt-3 font-display text-3xl lg:text-5xl font-bold text-navy-950 text-balance">
+              Quem está por trás das nossas soluções.
+            </h2>
           </div>
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-8 items-center justify-items-center">
             {partners.map((p) => (
