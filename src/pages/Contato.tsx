@@ -34,7 +34,7 @@ const Contato = () => {
             <p className="mt-3 text-muted-foreground">Escolha o canal que preferir. Respondemos em horário comercial.</p>
             <ul className="mt-8 space-y-5">
               <li className="flex items-start gap-4">
-                <span className="h-11 w-11 rounded-xl bg-navy-950 flex items-center justify-center shrink-0">
+                <span className="h-11 w-11 rounded-xl bg-blue-500 flex items-center justify-center shrink-0">
                   <Phone className="h-5 w-5 text-white" />
                 </span>
                 <div>
@@ -43,25 +43,25 @@ const Contato = () => {
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <span className="h-11 w-11 rounded-xl bg-navy-950 flex items-center justify-center shrink-0">
+                <span className="h-11 w-11 rounded-xl bg-green-500 flex items-center justify-center shrink-0">
                   <MessageCircle className="h-5 w-5 text-white" />
                 </span>
                 <div>
                   <div className="text-xs uppercase tracking-widest text-muted-foreground">WhatsApp</div>
-                  <div className="text-navy-950 font-medium">+55 (11) 4861-4030</div>
+                  <a href="https://wa.me/551148614030" target="_blank" rel="noopener noreferrer" className="text-navy-950 font-medium hover:text-green-600 transition-colors">+55 (11) 4861-4030</a>
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <span className="h-11 w-11 rounded-xl bg-navy-950 flex items-center justify-center shrink-0">
+                <span className="h-11 w-11 rounded-xl bg-violet-500 flex items-center justify-center shrink-0">
                   <Mail className="h-5 w-5 text-white" />
                 </span>
                 <div>
                   <div className="text-xs uppercase tracking-widest text-muted-foreground">E-mail</div>
-                  <div className="text-navy-950 font-medium">contato@lazarti.com.br</div>
+                  <a href="mailto:contato@lazarti.com.br" className="text-navy-950 font-medium hover:text-accent transition-colors">contato@lazarti.com.br</a>
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <span className="h-11 w-11 rounded-xl bg-navy-950 flex items-center justify-center shrink-0">
+                <span className="h-11 w-11 rounded-xl bg-rose-500 flex items-center justify-center shrink-0">
                   <MapPin className="h-5 w-5 text-white" />
                 </span>
                 <div>
@@ -105,6 +105,22 @@ const Contato = () => {
               </Button>
             </form>
           </div>
+        </div>
+      </section>
+
+      {/* MAPA */}
+      <section className="border-t border-border">
+        <div className="w-full h-80 lg:h-96">
+          <iframe
+            title="Localização Lazarti"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0!2d-46.6436!3d-23.5431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5832b7f46f07%3A0x0!2sR.+Bar%C3%A3o+de+Itapetininga%2C+273+-+Rep%C3%BAblica%2C+S%C3%A3o+Paulo+-+SP%2C+01042-001!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </section>
     </PageLayout>

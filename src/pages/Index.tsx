@@ -16,6 +16,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { useEffect, useRef, useState, useCallback } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import LgpdBanner from "@/components/LgpdBanner";
 import { services } from "@/data/services";
 
 const heroSlides = [
@@ -198,6 +199,8 @@ const faqs = [
 const Index = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showTop, setShowTop] = useState(false);
+  const [counts, setCounts] = useState({ a: 0, b: 0, c: 0, d: 0 });
+  const targets = { a: 8, b: 24, c: 100, d: 98 };
 
   useEffect(() => {
     const handleScroll = () => setShowTop(window.scrollY > 500);
@@ -205,21 +208,61 @@ const Index = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Scroll reveal
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  // Counter animation
+  const animateCounters = useCallback(() => {
+    const duration = 1500;
+    const start = Date.now();
+    const tick = () => {
+      const elapsed = Date.now() - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      setCounts({
+        a: Math.round(ease * targets.a),
+        b: Math.round(ease * targets.b),
+        c: Math.round(ease * targets.c),
+        d: Math.round(ease * targets.d),
+      });
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, []);
+
+  useEffect(() => {
+    const el = document.getElementById("authority-section");
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { animateCounters(); observer.disconnect(); }
+    }, { threshold: 0.3 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [animateCounters]);
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <HeroCarousel />
 
       {/* AUTHORITY */}
-      <section className="border-y border-border bg-white">
+      <section id="authority-section" className="border-y border-border bg-white">
         <div className="container py-14 grid grid-cols-2 lg:grid-cols-4 gap-10">
           {[
-            { k: "+8", l: "Anos de mercado" },
-            { k: "24/7", l: "Monitoramento contínuo" },
-            { k: "100%", l: "Atendimento especializado" },
-            { k: "98+", l: "Projetos personalizados" },
+            { k: `+${counts.a}`, l: "Anos de mercado" },
+            { k: `${counts.b}/7`, l: "Monitoramento contínuo" },
+            { k: `${counts.c}%`, l: "Atendimento especializado" },
+            { k: `${counts.d}+`, l: "Projetos personalizados" },
           ].map((s, i) => (
-            <div key={s.l} className="text-center lg:text-left animate-count" style={{ animationDelay: `${i * 0.1}s` }}>
+            <div key={s.l} className={`text-center lg:text-left reveal reveal-delay-${i + 1}`}>
               <div className="font-display text-4xl lg:text-5xl font-bold bg-gradient-to-r from-navy-950 to-blue-600 bg-clip-text text-transparent">{s.k}</div>
               <div className="mt-2 text-sm text-muted-foreground">{s.l}</div>
             </div>
@@ -516,6 +559,8 @@ const Index = () => {
           <ChevronUp className="h-5 w-5 text-white" />
         </button>
       )}
+
+      <LgpdBanner />
     </div>
   );
 };
