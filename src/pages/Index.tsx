@@ -298,7 +298,7 @@ const Index = () => {
       {/* TESTIMONIALS */}
       <section className="py-24 lg:py-32 bg-secondary">
         <div className="container">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl mx-auto text-center">
             <div className="text-sm font-semibold uppercase tracking-widest text-accent">Clientes</div>
             <h2 className="mt-3 font-display text-3xl lg:text-5xl font-bold text-navy-950 text-balance">
               A confiança de quem opera no alto nível.
@@ -338,14 +338,15 @@ const Index = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={p.name}
-                className="flex items-center justify-center h-16 w-full px-4 rounded-xl border border-border hover:border-accent hover:shadow-card transition-all duration-300 bg-white"
+                className="flex flex-col items-center justify-center gap-3 h-24 w-full px-4 py-4 rounded-xl border border-border hover:border-accent hover:shadow-card transition-all duration-300 bg-white"
               >
                 <img
                   src={p.logo}
                   alt={`${p.name} logo`}
                   loading="lazy"
-                  className="max-h-10 max-w-[120px] w-auto h-auto object-contain"
+                  className="max-h-9 max-w-[110px] w-auto h-auto object-contain"
                 />
+                <span className="text-xs font-medium text-muted-foreground text-center leading-tight">{p.name}</span>
               </a>
             ))}
           </div>
