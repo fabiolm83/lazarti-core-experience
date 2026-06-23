@@ -382,24 +382,26 @@ const Index = () => {
       </section>
 
       {/* PROCESSO */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="container">
+      <section className="py-24 lg:py-32 bg-navy-950 relative overflow-hidden">
+        <div className="absolute inset-0 grid-pattern opacity-30" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial" />
+        <div className="container relative">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <div className="text-sm font-semibold uppercase tracking-widest text-accent">Como funciona</div>
-            <h2 className="mt-3 font-display text-3xl lg:text-5xl font-bold text-navy-950 text-balance">
+            <div className="text-sm font-semibold uppercase tracking-widest text-primary-glow">Como funciona</div>
+            <h2 className="mt-3 font-display text-3xl lg:text-5xl font-bold text-white text-balance">
               Do diagnóstico ao suporte contínuo.
             </h2>
-            <p className="mt-5 text-lg text-muted-foreground">Um processo claro, transparente e sem surpresas.</p>
+            <p className="mt-5 text-lg text-white/60">Um processo claro, transparente e sem surpresas.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map(({ icon: Icon, step, title, desc }) => (
-              <div key={step} className="relative bg-white rounded-2xl p-8 border border-border shadow-card hover:shadow-elegant hover:-translate-y-1 transition-all duration-500">
+              <div key={step} className="relative bg-navy-900 rounded-2xl p-8 border border-white/10 hover:bg-navy-800 hover:-translate-y-1 transition-all duration-500">
                 <div className="absolute -top-4 left-8 bg-gradient-accent text-white text-xs font-bold px-3 py-1 rounded-full">{step}</div>
-                <div className="h-12 w-12 rounded-xl bg-navy-950 flex items-center justify-center mt-2">
-                  <Icon className="h-6 w-6 text-white" />
+                <div className="h-12 w-12 rounded-xl bg-white/10 flex items-center justify-center mt-2">
+                  <Icon className="h-6 w-6 text-primary-glow" />
                 </div>
-                <h3 className="mt-6 font-display text-lg font-semibold text-navy-950">{title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                <h3 className="mt-6 font-display text-lg font-semibold text-white">{title}</h3>
+                <p className="mt-3 text-sm text-white/60 leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
