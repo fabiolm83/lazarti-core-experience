@@ -325,17 +325,15 @@ const Index = () => {
       </section>
 
       {/* PARTNERS */}
-      <section id="parceiros" className="py-20 border-y border-border overflow-hidden">
+      <section id="parceiros" className="py-20 border-y border-border">
         <div className="container">
-          <div className="text-center text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+          <div className="text-center text-sm font-semibold uppercase tracking-widest text-muted-foreground mb-10">
             Parceiros e tecnologias
           </div>
-        </div>
-        <div className="mt-10 relative">
-          <div className="flex animate-marquee gap-16 w-max items-center">
-            {[...partners, ...partners].map((p, i) => (
-              <Link key={`${p.name}-${i}`} to="/parceiros" className="flex items-center justify-center h-14 px-4 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all flex-shrink-0">
-                <img src={p.logo} alt={`${p.name} logo`} loading="lazy" className="max-h-9 max-w-[120px] w-auto h-auto object-contain" />
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 gap-x-10 gap-y-8 items-center justify-items-center">
+            {partners.map((p) => (
+              <Link key={p.name} to="/parceiros" className="flex items-center justify-center h-14 px-2 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+                <img src={p.logo} alt={`${p.name} logo`} loading="lazy" className="max-h-9 max-w-[110px] w-auto h-auto object-contain" />
               </Link>
             ))}
           </div>
