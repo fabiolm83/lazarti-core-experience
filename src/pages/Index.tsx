@@ -205,7 +205,7 @@ const Index = () => {
       {/* SERVICES */}
       <section id="servicos" className="py-24 lg:py-32 bg-gradient-subtle">
         <div className="container">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl mx-auto text-center">
             <div className="text-sm font-semibold uppercase tracking-widest text-accent">Serviços</div>
             <h2 className="mt-3 font-display text-3xl lg:text-5xl font-bold text-navy-950 text-balance">
               Soluções completas para a sua operação tecnológica.

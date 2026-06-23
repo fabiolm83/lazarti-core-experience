@@ -44,21 +44,25 @@ const Parceiros = () => {
         description="Trabalhamos com as principais marcas e plataformas do mercado para entregar soluções enterprise certificadas."
         breadcrumb={[{ label: "Parceiros" }]}
       />
-      <section className="py-20 lg:py-24">
+      <section className="py-20 lg:py-24 border-y border-border bg-white">
         <div className="container">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-5">
             {partners.map((p) => (
               <a
                 key={p.name}
                 href={p.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white rounded-2xl border border-border shadow-card p-6 flex flex-col items-center justify-center gap-4 hover:shadow-elegant hover:-translate-y-1 hover:border-accent transition-all"
+                title={p.name}
+                className="flex flex-col items-center justify-center gap-3 h-24 w-full px-4 py-4 rounded-xl border border-border hover:border-accent hover:shadow-card transition-all duration-300 bg-white"
               >
-                <div className="h-16 flex items-center justify-center">
-                  <img src={p.logo} alt={`${p.name} logo`} loading="lazy" className="max-h-12 max-w-[140px] w-auto h-auto object-contain" />
-                </div>
-                <div className="text-xs font-medium text-muted-foreground text-center">{p.name}</div>
+                <img
+                  src={p.logo}
+                  alt={`${p.name} logo`}
+                  loading="lazy"
+                  className="max-h-9 max-w-[110px] w-auto h-auto object-contain"
+                />
+                <span className="text-xs font-medium text-muted-foreground text-center leading-tight">{p.name}</span>
               </a>
             ))}
           </div>
