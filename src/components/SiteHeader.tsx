@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navItems = [
@@ -12,14 +14,16 @@ const navItems = [
 
 export const SiteHeader = () => {
   const { pathname } = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-white/95 border-b border-border shadow-sm">
-      <div className="container flex h-20 items-center justify-between border-none">
-        <Link to="/" className="flex items-center">
-          <div className="bg-white rounded-lg px-3 py-1.5 shadow-elegant border border-border">
-            <img src={logo} alt="Lazarti - Soluções em Tecnologia" className="h-10 w-auto" />
-          </div>
+      <div className="container flex h-20 items-center justify-between">
+        <Link to="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
+          <img src={logo} alt="Lazarti - Soluções em Tecnologia" className="h-10 w-auto" />
         </Link>
+
+        {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-9 text-sm text-navy-950/70">
           {navItems.map((item) => (
             <Link
@@ -33,10 +37,47 @@ export const SiteHeader = () => {
             </Link>
           ))}
         </nav>
-        <Button asChild className="bg-gradient-accent text-white hover:opacity-95 font-medium rounded-full px-5 h-10">
-          <Link to="/contato">Falar com Especialista</Link>
-        </Button>
+
+        <div className="flex items-center gap-3">
+          <Button asChild className="hidden lg:inline-flex bg-gradient-accent text-white hover:opacity-95 font-medium rounded-full px-5 h-10">
+            <Link to="/contato">Falar com Especialista</Link>
+          </Button>
+
+          {/* Mobile hamburger */}
+          <button
+            className="lg:hidden p-2 rounded-lg hover:bg-secondary transition-colors"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Abrir menu"
+          >
+            {menuOpen ? <X className="h-6 w-6 text-navy-950" /> : <Menu className="h-6 w-6 text-navy-950" />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="lg:hidden border-t border-border bg-white/98 backdrop-blur-xl">
+          <nav className="container py-4 flex flex-col gap-1">
+            {navItems.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={() => setMenuOpen(false)}
+                className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors hover:bg-secondary hover:text-navy-950 ${
+                  pathname === item.to ? "bg-secondary text-navy-950" : "text-navy-950/70"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="mt-3 px-4">
+              <Button asChild className="w-full bg-gradient-accent text-white hover:opacity-95 font-medium rounded-full h-11">
+                <Link to="/contato" onClick={() => setMenuOpen(false)}>Falar com Especialista</Link>
+              </Button>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };

@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { services } from "@/data/services";
@@ -62,9 +62,9 @@ const segments = [
 ];
 
 const testimonials = [
-  { quote: "A Lazarti transformou nossa operação de TI. Hoje temos previsibilidade, segurança e suporte que realmente entende o negócio.", author: "Carla Mendes", role: "Diretora de Operações, Grupo Vértice" },
-  { quote: "Migramos toda nossa infraestrutura para a cloud com zero impacto. Profissionalismo enterprise do começo ao fim.", author: "Rodrigo Almeida", role: "CTO, Industrial Pacific" },
-  { quote: "Parceria estratégica de verdade. A consultoria deles redefiniu nossa estrutura tecnológica em 6 meses.", author: "Fernanda Lopes", role: "CEO, RedeSaúde+" },
+  { quote: "A Lazarti transformou nossa operação de TI. Hoje temos previsibilidade, segurança e suporte que realmente entende o negócio.", author: "Carla Mendes", role: "Diretora de Operações, Grupo Vértice", initials: "CM", color: "from-blue-500 to-blue-700" },
+  { quote: "Migramos toda nossa infraestrutura para a cloud com zero impacto. Profissionalismo enterprise do começo ao fim.", author: "Rodrigo Almeida", role: "CTO, Industrial Pacific", initials: "RA", color: "from-indigo-500 to-indigo-700" },
+  { quote: "Parceria estratégica de verdade. A consultoria deles redefiniu nossa estrutura tecnológica em 6 meses.", author: "Fernanda Lopes", role: "CEO, RedeSaúde+", initials: "FL", color: "from-violet-500 to-violet-700" },
 ];
 
 import partnerMicrosoft from "@/assets/partners/microsoft.svg";
@@ -193,9 +193,9 @@ const Index = () => {
             { k: "24/7", l: "Monitoramento contínuo" },
             { k: "100%", l: "Atendimento especializado" },
             { k: "98+", l: "Projetos personalizados" },
-          ].map((s) => (
-            <div key={s.l} className="text-center lg:text-left">
-              <div className="font-display text-4xl lg:text-5xl font-bold text-navy-950">{s.k}</div>
+          ].map((s, i) => (
+            <div key={s.l} className="text-center lg:text-left animate-count" style={{ animationDelay: `${i * 0.1}s` }}>
+              <div className="font-display text-4xl lg:text-5xl font-bold bg-gradient-to-r from-navy-950 to-blue-600 bg-clip-text text-transparent">{s.k}</div>
               <div className="mt-2 text-sm text-muted-foreground">{s.l}</div>
             </div>
           ))}
@@ -306,12 +306,17 @@ const Index = () => {
           </div>
           <div className="mt-16 grid lg:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
-              <figure key={i} className="bg-white rounded-2xl p-8 lg:p-10 border border-border shadow-card flex flex-col">
+              <figure key={i} className="bg-white rounded-2xl p-8 lg:p-10 border border-border shadow-card flex flex-col hover:shadow-elegant hover:-translate-y-1 transition-all duration-500">
                 <div className="text-5xl font-display text-accent leading-none">"</div>
                 <blockquote className="mt-2 text-navy-950 leading-relaxed flex-1">{t.quote}</blockquote>
-                <figcaption className="mt-8 pt-6 border-t border-border">
-                  <div className="font-semibold text-navy-950">{t.author}</div>
-                  <div className="text-sm text-muted-foreground">{t.role}</div>
+                <figcaption className="mt-8 pt-6 border-t border-border flex items-center gap-4">
+                  <div className={`h-11 w-11 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white text-sm font-bold flex-shrink-0`}>
+                    {t.initials}
+                  </div>
+                  <div>
+                    <div className="font-semibold text-navy-950">{t.author}</div>
+                    <div className="text-sm text-muted-foreground">{t.role}</div>
+                  </div>
                 </figcaption>
               </figure>
             ))}
@@ -320,15 +325,17 @@ const Index = () => {
       </section>
 
       {/* PARTNERS */}
-      <section id="parceiros" className="py-20 border-y border-border">
+      <section id="parceiros" className="py-20 border-y border-border overflow-hidden">
         <div className="container">
           <div className="text-center text-sm font-semibold uppercase tracking-widest text-muted-foreground">
             Parceiros e tecnologias
           </div>
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-8 gap-y-10 items-center">
-            {partners.map((p) => (
-              <Link key={p.name} to="/parceiros" className="flex items-center justify-center h-16 px-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
-                <img src={p.logo} alt={`${p.name} logo`} loading="lazy" className="max-h-10 max-w-[140px] w-auto h-auto object-contain" />
+        </div>
+        <div className="mt-10 relative">
+          <div className="flex animate-marquee gap-16 w-max items-center">
+            {[...partners, ...partners].map((p, i) => (
+              <Link key={`${p.name}-${i}`} to="/parceiros" className="flex items-center justify-center h-14 px-4 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all flex-shrink-0">
+                <img src={p.logo} alt={`${p.name} logo`} loading="lazy" className="max-h-9 max-w-[120px] w-auto h-auto object-contain" />
               </Link>
             ))}
           </div>
