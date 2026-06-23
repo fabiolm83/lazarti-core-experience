@@ -6,6 +6,8 @@ import slideMonitoring from "@/assets/service-monitoring.jpg";
 import {
   ArrowRight, Check, Building2, Store, Factory, Stethoscope,
   Layers, ClipboardList, Sparkles, Gauge, Lock, TrendingUp, Users,
+  ChevronUp, MessageCircle, Search, Wrench, BarChart3, HeadphonesIcon,
+  Plus, Minus,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -178,11 +180,34 @@ const HeroCarousel = () => {
   );
 };
 
+const steps = [
+  { icon: Search, step: "01", title: "Diagnóstico gratuito", desc: "Analisamos seu ambiente tecnológico atual e identificamos gargalos, riscos e oportunidades de melhoria." },
+  { icon: Wrench, step: "02", title: "Proposta personalizada", desc: "Elaboramos uma solução sob medida com escopo claro, prazos definidos e investimento transparente." },
+  { icon: BarChart3, step: "03", title: "Implementação", desc: "Nossa equipe executa com metodologia comprovada, minimizando impacto na sua operação." },
+  { icon: HeadphonesIcon, step: "04", title: "Suporte contínuo", desc: "Monitoramento 24/7, SLA garantido e uma equipe dedicada para garantir a continuidade do seu negócio." },
+];
+
+const faqs = [
+  { q: "Quanto tempo leva para implementar a Terceirização de TI?", a: "O processo de onboarding leva entre 15 e 30 dias, dependendo do porte do ambiente. Durante esse período fazemos o levantamento completo, documentação e transferência gradual da gestão sem impacto na operação." },
+  { q: "A Lazarti atende empresas fora de São Paulo?", a: "Sim. Atendemos empresas em todo o Brasil com equipe remota e parceiros locais para demandas presenciais. Nosso NOC opera 24/7 independente de localização." },
+  { q: "Como funciona o SLA de atendimento?", a: "Oferecemos SLAs corporativos com tempo de resposta a partir de 15 minutos para incidentes críticos, 2 horas para alta prioridade e 8 horas úteis para demandas normais. Tudo monitorado e reportado mensalmente." },
+  { q: "Vocês trabalham com contratos de longo prazo?", a: "Oferecemos contratos anuais com flexibilidade de escopo. Não acreditamos em lock-in — nosso objetivo é ser renovado pela qualidade do serviço, não por cláusulas contratuais." },
+  { q: "É possível migrar para a nuvem sem downtime?", a: "Sim. Nossa metodologia de migração é planejada em fases, com ambiente paralelo e rollback garantido. Executamos migrações complexas com zero impacto para o usuário final." },
+];
+
 const Index = () => {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [showTop, setShowTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setShowTop(window.scrollY > 500);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
-
       <HeroCarousel />
 
       {/* AUTHORITY */}
@@ -356,6 +381,63 @@ const Index = () => {
         </div>
       </section>
 
+      {/* PROCESSO */}
+      <section className="py-24 lg:py-32 bg-white">
+        <div className="container">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-sm font-semibold uppercase tracking-widest text-accent">Como funciona</div>
+            <h2 className="mt-3 font-display text-3xl lg:text-5xl font-bold text-navy-950 text-balance">
+              Do diagnóstico ao suporte contínuo.
+            </h2>
+            <p className="mt-5 text-lg text-muted-foreground">Um processo claro, transparente e sem surpresas.</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {steps.map(({ icon: Icon, step, title, desc }) => (
+              <div key={step} className="relative bg-white rounded-2xl p-8 border border-border shadow-card hover:shadow-elegant hover:-translate-y-1 transition-all duration-500">
+                <div className="absolute -top-4 left-8 bg-gradient-accent text-white text-xs font-bold px-3 py-1 rounded-full">{step}</div>
+                <div className="h-12 w-12 rounded-xl bg-navy-950 flex items-center justify-center mt-2">
+                  <Icon className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="mt-6 font-display text-lg font-semibold text-navy-950">{title}</h3>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-24 lg:py-32 bg-gradient-subtle">
+        <div className="container">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-sm font-semibold uppercase tracking-widest text-accent">Dúvidas frequentes</div>
+            <h2 className="mt-3 font-display text-3xl lg:text-5xl font-bold text-navy-950 text-balance">
+              Respondemos as principais perguntas.
+            </h2>
+          </div>
+          <div className="max-w-3xl mx-auto space-y-3">
+            {faqs.map((faq, i) => (
+              <div key={i} className="bg-white rounded-2xl border border-border shadow-card overflow-hidden">
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full flex items-center justify-between p-6 text-left hover:bg-secondary/50 transition-colors"
+                >
+                  <span className="font-display font-semibold text-navy-950 pr-4">{faq.q}</span>
+                  {openFaq === i
+                    ? <Minus className="h-5 w-5 text-accent flex-shrink-0" />
+                    : <Plus className="h-5 w-5 text-accent flex-shrink-0" />}
+                </button>
+                {openFaq === i && (
+                  <div className="px-6 pb-6 text-muted-foreground leading-relaxed border-t border-border pt-4">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section id="contato" className="py-24 lg:py-32 bg-gradient-hero relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-30" />
@@ -382,6 +464,28 @@ const Index = () => {
       </section>
 
       <SiteFooter />
+
+      {/* WhatsApp flutuante */}
+      <a
+        href="https://wa.me/551148614030"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-green-500 hover:bg-green-600 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+        aria-label="Falar pelo WhatsApp"
+      >
+        <MessageCircle className="h-7 w-7 text-white fill-white" />
+      </a>
+
+      {/* Botão voltar ao topo */}
+      {showTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-24 right-6 z-50 h-11 w-11 rounded-full bg-navy-950 hover:bg-navy-800 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+          aria-label="Voltar ao topo"
+        >
+          <ChevronUp className="h-5 w-5 text-white" />
+        </button>
+      )}
     </div>
   );
 };
