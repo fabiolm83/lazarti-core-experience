@@ -241,13 +241,22 @@ const Index = () => {
           </div>
 
           <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {services.map(({ icon: Icon, title, desc, slug }) => (
+            {services.map(({ icon: Icon, title, desc, slug }, index) => {
+              const colors = [
+                "bg-blue-500",
+                "bg-violet-500",
+                "bg-cyan-500",
+                "bg-emerald-500",
+                "bg-orange-500",
+                "bg-rose-500",
+              ];
+              return (
               <Link
                 key={slug}
                 to={`/servicos/${slug}`}
                 className="group relative bg-white rounded-2xl p-8 border border-border shadow-card hover:shadow-elegant hover:-translate-y-1 transition-all duration-500"
               >
-                <div className="h-12 w-12 rounded-xl bg-navy-950 flex items-center justify-center group-hover:bg-gradient-accent transition-colors">
+                <div className={`h-12 w-12 rounded-xl ${colors[index % colors.length]} flex items-center justify-center`}>
                   <Icon className="h-6 w-6 text-white" />
                 </div>
                 <h3 className="mt-6 font-display text-xl font-semibold text-navy-950">{title}</h3>
@@ -256,7 +265,8 @@ const Index = () => {
                   Saiba mais <ArrowRight className="ml-1 h-4 w-4" />
                 </div>
               </Link>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -310,12 +320,30 @@ const Index = () => {
             </p>
           </div>
           <div className="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {segments.map(({ icon: Icon, label }) => (
-              <Link key={label} to="/segmentos" className="group flex flex-col items-center text-center p-6 rounded-xl border border-border hover:border-accent hover:shadow-card transition-all bg-white">
-                <Icon className="h-8 w-8 text-navy-950 group-hover:text-accent transition-colors" strokeWidth={1.5} />
-                <div className="mt-4 text-sm font-medium text-navy-950">{label}</div>
-              </Link>
-            ))}
+            {segments.map(({ icon: Icon, label }, index) => {
+              const segColors = [
+                "text-blue-500 group-hover:text-blue-600",
+                "text-violet-500 group-hover:text-violet-600",
+                "text-orange-500 group-hover:text-orange-600",
+                "text-emerald-500 group-hover:text-emerald-600",
+                "text-cyan-500 group-hover:text-cyan-600",
+                "text-rose-500 group-hover:text-rose-600",
+              ];
+              const bgColors = [
+                "group-hover:border-blue-300",
+                "group-hover:border-violet-300",
+                "group-hover:border-orange-300",
+                "group-hover:border-emerald-300",
+                "group-hover:border-cyan-300",
+                "group-hover:border-rose-300",
+              ];
+              return (
+                <Link key={label} to="/segmentos" className={`group flex flex-col items-center text-center p-6 rounded-xl border border-border ${bgColors[index % bgColors.length]} hover:shadow-card transition-all bg-white`}>
+                  <Icon className={`h-8 w-8 ${segColors[index % segColors.length]} transition-colors`} strokeWidth={1.5} />
+                  <div className="mt-4 text-sm font-medium text-navy-950">{label}</div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
