@@ -22,7 +22,7 @@ const tools = [
   {
     name: "AnyDesk",
     desc: "Ferramenta de acesso remoto leve e rápida. Ideal para suporte em conexões limitadas.",
-    url: "https://anydesk.com/pt/downloads",
+    url: "https://anydesk.com/pt/downloads/thank-you?dv=win_exe",
     color: "from-red-500 to-red-700",
     border: "hover:border-red-400",
     badge: "bg-red-100 text-red-700",
