@@ -11,6 +11,7 @@ const navItems = [
   { to: "/diferenciais", label: "Diferenciais" },
   { to: "/segmentos", label: "Segmentos" },
   { to: "/parceiros", label: "Parceiros" },
+  { to: "/ferramentas", label: "Ferramentas" },
   { to: "/contato", label: "Contato" },
 ];
 
