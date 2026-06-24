@@ -20,8 +20,9 @@ const timeline = [
 ];
 
 const team = [
-  { name: "Fábio Machado", role: "CEO & Fundador", initials: "FM", color: "from-blue-500 to-blue-700" },
-  { name: "Equipe NOC", role: "Monitoramento 24/7", initials: "NOC", color: "from-violet-500 to-violet-700" },
+  { name: "Fábio L. Machado", role: "Sócio Fundador", initials: "FM", color: "from-blue-500 to-blue-700" },
+  { name: "Rodrigo Gonçalves", role: "Sócio Fundador", initials: "RG", color: "from-violet-500 to-violet-700" },
+  { name: "Equipe NOC", role: "Monitoramento 24/7", initials: "NOC", color: "from-cyan-500 to-cyan-700" },
   { name: "Suporte N2/N3", role: "Engenheiros Sênior", initials: "N3", color: "from-emerald-500 to-emerald-700" },
 ];
 
@@ -91,14 +92,14 @@ const Sobre = () => {
               Nossa equipe é formada por profissionais certificados com experiência em ambientes corporativos de alta demanda.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {team.map((member) => (
               <div key={member.name} className="bg-white rounded-2xl p-8 border border-border shadow-card text-center hover:shadow-elegant hover:-translate-y-1 transition-all duration-500">
                 <div className={`h-16 w-16 rounded-full bg-gradient-to-br ${member.color} flex items-center justify-center text-white font-bold text-lg mx-auto`}>
                   {member.initials}
                 </div>
                 <h3 className="mt-4 font-display text-lg font-semibold text-navy-950">{member.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{member.role}</p>
+                <p className={`mt-1 text-sm ${member.role === "Sócio Fundador" ? "text-accent font-medium" : "text-muted-foreground"}`}>{member.role}</p>
               </div>
             ))}
           </div>
