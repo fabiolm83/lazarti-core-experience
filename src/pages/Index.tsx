@@ -47,12 +47,12 @@ const heroSlides = [
 ];
 
 const differentiators = [
-  { icon: Users, title: "Atendimento consultivo", desc: "Especialistas com visão estratégica de negócio." },
-  { icon: TrendingUp, title: "Redução de custos", desc: "Otimização operacional e eficiência comprovada." },
-  { icon: Lock, title: "Segurança e continuidade", desc: "Operação estável, segura e em conformidade." },
-  { icon: Gauge, title: "Suporte ágil", desc: "Resposta rápida e personalizada para cada cliente." },
-  { icon: Layers, title: "Soluções escaláveis", desc: "Infraestrutura preparada para o seu crescimento." },
-  { icon: Sparkles, title: "Visão de negócio", desc: "Tecnologia como vetor real de resultados." },
+  { icon: Users, title: "Atendimento consultivo", desc: "Especialistas com visão estratégica de negócio.", detail: "Não somos apenas um suporte técnico — somos parceiros de negócio. Nossa equipe analisa o seu ambiente, entende os seus processos e propõe soluções alinhadas aos seus objetivos. Cada recomendação é feita com base na realidade da sua empresa, não em modelos genéricos." },
+  { icon: TrendingUp, title: "Redução de custos", desc: "Otimização operacional e eficiência comprovada.", detail: "Identificamos desperdícios, eliminamos redundâncias e estruturamos sua infraestrutura para operar com o máximo de eficiência. Com contratos claros e previsíveis, você tem controle total sobre os custos de TI e evita surpresas no orçamento." },
+  { icon: Lock, title: "Segurança e continuidade", desc: "Operação estável, segura e em conformidade.", detail: "Sua operação não pode parar. Implementamos camadas de proteção, políticas de backup, controle de acessos e monitoramento contínuo para garantir a disponibilidade dos seus sistemas — e a conformidade com a legislação vigente." },
+  { icon: Gauge, title: "Suporte ágil", desc: "Resposta rápida e personalizada com SLA garantido.", detail: "Quando algo acontece, você não fica na fila. Nosso time responde com agilidade e resolve com precisão, seguindo os acordos de nível de serviço definidos para o seu contrato. Atendimento humano, técnico e sem enrolação." },
+  { icon: Layers, title: "Soluções escaláveis", desc: "Infraestrutura preparada para o seu crescimento.", detail: "Planejamos sua infraestrutura pensando no hoje e no amanhã. À medida que sua empresa cresce, os sistemas acompanham — sem a necessidade de reconstruir do zero. Tecnologia que evolui com o seu negócio, de forma estruturada e segura." },
+  { icon: Sparkles, title: "Visão de negócio", desc: "Tecnologia como vetor real de resultados.", detail: "Enxergamos TI como alavanca estratégica. Cada decisão técnica é orientada por impacto real no seu negócio — produtividade, competitividade e crescimento. Porque tecnologia bem aplicada não é despesa, é investimento com retorno mensurável." },
 ];
 
 const segments = [
@@ -338,14 +338,34 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10">
-            {differentiators.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-navy-950 p-8 lg:p-10 hover:bg-navy-900 transition-colors">
-                <Icon className="h-7 w-7 text-primary-glow" strokeWidth={1.5} />
-                <h3 className="mt-5 font-display text-lg font-semibold text-white">{title}</h3>
-                <p className="mt-2 text-sm text-white/60 leading-relaxed">{desc}</p>
-              </div>
-            ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {differentiators.map(({ icon: Icon, title, desc, detail }) => {
+              const [flipped, setFlipped] = useState(false);
+              return (
+                <div
+                  key={title}
+                  onClick={() => setFlipped(!flipped)}
+                  className="cursor-pointer group relative bg-navy-900 rounded-2xl border border-white/10 hover:border-primary-glow/40 transition-all duration-300 overflow-hidden min-h-[180px]"
+                  style={{ perspective: "1000px" }}
+                >
+                  <div className={`absolute inset-0 p-8 lg:p-10 flex flex-col transition-all duration-500 ${flipped ? "opacity-0 scale-95 pointer-events-none" : "opacity-100 scale-100"}`}>
+                    <Icon className="h-7 w-7 text-primary-glow" strokeWidth={1.5} />
+                    <h3 className="mt-5 font-display text-lg font-semibold text-white">{title}</h3>
+                    <p className="mt-2 text-sm text-white/60 leading-relaxed">{desc}</p>
+                    <div className="mt-4 text-xs text-primary-glow/70 flex items-center gap-1">
+                      <Plus className="h-3 w-3" /> clique para saber mais
+                    </div>
+                  </div>
+                  <div className={`absolute inset-0 p-8 lg:p-10 flex flex-col bg-gradient-accent transition-all duration-500 ${flipped ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}`}>
+                    <h3 className="font-display text-lg font-semibold text-white">{title}</h3>
+                    <p className="mt-3 text-sm text-white/90 leading-relaxed flex-1">{detail}</p>
+                    <div className="mt-4 text-xs text-white/70 flex items-center gap-1">
+                      <Minus className="h-3 w-3" /> clique para fechar
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           <div className="mt-10 text-center">
