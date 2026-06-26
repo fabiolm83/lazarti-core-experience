@@ -71,8 +71,8 @@ const segments = [
 ];
 
 const testimonials = [
-  { quote: "A Lazarti transformou nossa operação de TI. Hoje temos previsibilidade, segurança e suporte que realmente entende o negócio.", author: "Carla Mendes", role: "Diretora de Operações, Grupo Vértice", initials: "CM", color: "from-blue-500 to-blue-700" },
-  { quote: "Migramos toda nossa infraestrutura para a cloud com zero impacto. Profissionalismo enterprise do começo ao fim.", author: "Rodrigo Almeida", role: "CTO, Industrial Pacific", initials: "RA", color: "from-indigo-500 to-indigo-700" },
+  { quote: "A Lazarti está sempre disponível para nos atender com uma equipe profissional e competente sempre interessadas em ajudar. Eles foram essenciais para continuidade do negócio disponibilizando aos nossos colaboradores um ambiente de home office permitindo a empresa manter suas atividades sem impacto aos negócios.", author: "Tatiana Schiliró", role: "Diretora, Ar - Arengenharia", initials: "TS", color: "from-blue-500 to-blue-700" },
+  { quote: "Com rapidez e competência Lazarti nos atende em São Paulo e demais regiões onde a ADMALL atua. Estamos satisfeitos com a prestação de serviços e parceria.", author: "Alex Francisco", role: "Gerente Administrativo, Admall", initials: "AF", color: "from-indigo-500 to-indigo-700" },
   { quote: "Parceria estratégica de verdade. A consultoria deles redefiniu nossa estrutura tecnológica em 6 meses.", author: "Fernanda Lopes", role: "CEO, RedeSaúde+", initials: "FL", color: "from-violet-500 to-violet-700" },
 ];
 
