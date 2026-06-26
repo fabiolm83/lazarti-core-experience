@@ -7,7 +7,7 @@ import {
   ArrowRight, Check, Building2, Store, Factory, Stethoscope,
   Layers, ClipboardList, Sparkles, Gauge, Lock, TrendingUp, Users,
   ChevronUp, MessageCircle, Search, Wrench, BarChart3, HeadphonesIcon,
-  Plus, Minus,
+  Plus, Minus, Scale, ShoppingBag, Heart, Home, Key,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -62,6 +62,12 @@ const segments = [
   { icon: Stethoscope, label: "Clínicas e saúde" },
   { icon: Layers, label: "Empresas multiunidade" },
   { icon: ClipboardList, label: "Operações administrativas" },
+  { icon: Building2, label: "Construtoras e incorporadoras" },
+  { icon: Scale, label: "Escritórios de Advocacia" },
+  { icon: ShoppingBag, label: "Shoppings e administradoras" },
+  { icon: Heart, label: "ONGs" },
+  { icon: Home, label: "Imobiliárias" },
+  { icon: Key, label: "Administradoras de Condomínios" },
 ];
 
 const testimonials = [
@@ -362,7 +368,7 @@ const Index = () => {
               Empresas de diferentes setores confiam na Lazarti para sustentar suas operações críticas.
             </p>
           </div>
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {segments.map(({ icon: Icon, label }, index) => {
               const segColors = [
                 "text-blue-500 group-hover:text-blue-600",
@@ -371,6 +377,12 @@ const Index = () => {
                 "text-emerald-500 group-hover:text-emerald-600",
                 "text-cyan-500 group-hover:text-cyan-600",
                 "text-rose-500 group-hover:text-rose-600",
+                "text-amber-500 group-hover:text-amber-600",
+                "text-indigo-500 group-hover:text-indigo-600",
+                "text-pink-500 group-hover:text-pink-600",
+                "text-red-500 group-hover:text-red-600",
+                "text-teal-500 group-hover:text-teal-600",
+                "text-lime-600 group-hover:text-lime-700",
               ];
               const bgColors = [
                 "group-hover:border-blue-300",
@@ -379,6 +391,12 @@ const Index = () => {
                 "group-hover:border-emerald-300",
                 "group-hover:border-cyan-300",
                 "group-hover:border-rose-300",
+                "group-hover:border-amber-300",
+                "group-hover:border-indigo-300",
+                "group-hover:border-pink-300",
+                "group-hover:border-red-300",
+                "group-hover:border-teal-300",
+                "group-hover:border-lime-300",
               ];
               return (
                 <Link key={label} to="/segmentos" className={`group flex flex-col items-center text-center p-6 rounded-xl border border-border ${bgColors[index % bgColors.length]} hover:shadow-card transition-all bg-white`}>
